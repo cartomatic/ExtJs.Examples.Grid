@@ -1,0 +1,102 @@
+#jsduck - ignore the generated docs
+docs/docs/
+
+#aptana
+*.project
+
+#webstorm
+.idea
+
+#ignore a linked mh generic package
+packages/
+
+
+#jslibs/
+
+
+############
+# Sencha #
+############
+
+#multi build ignore
+generatedFiles/
+
+temp/
+/build/
+.architect
+.project
+#.sencha/ #looks like stuff inside is needed for the package build process and is not dynamically created by cmd on each build
+.sass-cache/
+.sencha_backup/
+#yes, exclude ext framework
+ext/
+#yes, exclude touch framework
+touch/
+temp/
+build/
+
+#new in 6
+modern.json
+classic.json
+
+bootstrap.css
+bootstrap.js
+bootstrap.json
+bootstrap.jsonp
+sass/example/bootstrap.css
+sass/example/bootstrap.js
+sass/example/bootstrap.json
+sass/example/bootstrap.jsonp
+sass/example/example.css
+
+*slicer-temp*
+gwt-unitCache
+
+#merge backup files
+*.orig
+
+#internal
+
+
+#iis
+#do not ignore web.config - after all this is gonna be a web app...
+#web.config
+
+#vsdocman
+*.vsdoc
+
+#www logs
+www/logs/
+
+#www builds
+www/_build/output/
+www/apps/_build/
+www/resx/css/*.min.css
+www/resx/css/prod/
+
+#docs
+
+docs/*_docs/
+
+#aptana
+*.project
+
+#geomind
+gm_js/docs/docs
+
+#merge backup files
+*.orig
+
+#jetbrains
+.idea/
+
+node_modules/
+
+############
+## Windows
+############
+
+# Windows image file caches
+Thumbs.db
+
+deployer-configuration.json
