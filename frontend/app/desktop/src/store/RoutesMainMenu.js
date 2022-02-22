@@ -11,7 +11,9 @@
 
             'mh.FontIconsDictionary',
             'mh.data.model.Route',
-            'GridExamples.view.home.Home'
+            'GridExamples.view.home.Home',
+            'GridExamples.view.remoteGrid.RemoteGrid',
+            'GridExamples.view.localGrid.LocalGrid'
         ],
 
 
@@ -23,6 +25,18 @@
                 xtype: 'home',
                 navigationRoute: 'home',
                 iconCls: 'mainMenuHome'
+            },
+            {
+                id: 'local-grid',
+                xtype: 'local-grid',
+                navigationRoute: 'local-grid',
+                iconCls: 'mainMenuLocalGrid'
+            },
+            {
+                id: 'remote-grid',
+                xtype: 'remote-grid',
+                navigationRoute: 'remote-grid',
+                iconCls: 'mainMenuRemoteGrid'
             }
         ]
     });

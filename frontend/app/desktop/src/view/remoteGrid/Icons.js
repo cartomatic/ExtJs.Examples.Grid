@@ -4,16 +4,14 @@
     //Make sure strict mode is on
     'use strict';
 
-    Ext.define('GridExamples.view.main.Icons', {
+    Ext.define('GridExamples.view.remoteGrid.Icons', {
         singleton: true,
         requires: [
             'mh.FontIconsDictionary'
         ],
         constructor: function() {
             mh.FontIconsDictionary.addIcons({
-                mainMenuHome: 'x-li li-home',
-                mainMenuLocalGrid: 'x-li li-database',
-                mainMenuRemoteGrid: 'x-li li-database-refresh'
+                rgViewHeader: 'x-li li-database-refresh'
             });
         }
     });
