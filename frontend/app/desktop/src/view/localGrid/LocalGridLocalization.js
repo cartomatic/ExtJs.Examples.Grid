@@ -41,6 +41,18 @@
                 rowEditor: {
                     en: 'Row editor',
                     pl: 'Edytor wierszy'
+                },
+                dragAndDrop: {
+                    en: 'Drag & drop',
+                    pl: 'Przeciągnij i upuść'
+                },
+                groupingGrid: {
+                    en: 'Grouping grid',
+                    pl: 'Grupowanie w gridzie'
+                },
+                treeGrid: {
+                    en: 'Tree grid',
+                    pl: 'Tree grid'
                 }
             }
         }

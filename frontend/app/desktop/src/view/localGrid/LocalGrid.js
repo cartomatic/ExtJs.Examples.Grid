@@ -12,7 +12,12 @@
         requires: [
             'GridExamples.view.localGrid.Icons',
             'GridExamples.view.localGrid.LocalGridController',
-            'GridExamples.view.localGrid.LocalGridViewModel'
+            'GridExamples.view.localGrid.LocalGridViewModel',
+            'Ext.grid.plugin.RowExpander',
+            'Ext.grid.plugin.CellEditing',
+            'Ext.grid.rowedit.Plugin',
+            'Ext.grid.plugin.RowDragDrop',
+            'mh.plugin.grid.DragDrop'
         ],
 
         controller: 'local-grid',
@@ -427,42 +432,131 @@
                             }
                         ]
                     },
-
                     {
                         tab: {
-                            iconCls: mh.FontIconsDictionary.getIcon('lgColTypes'),
+                            iconCls: mh.FontIconsDictionary.getIcon('lgDragAndDrop'),
                             iconAlign: 'left',
                             bind: {
-                                title: '{localization.colTypes}'
+                                title: '{localization.dragAndDrop}'
                             }
                         },
                         layout: 'fit',
                         items: [
                             {
                                 xtype: 'panel',
-                                iconCls: mh.FontIconsDictionary.getIcon('lgColTypes'),
+                                iconCls: mh.FontIconsDictionary.getIcon('lgDragAndDrop'),
                                 bind: {
-                                    title: '{localization.colTypes}'
+                                    title: '{localization.dragAndDrop}'
                                 },
                                 layout: 'fit',
                                 items: [
-                                    // {
-                                    //     xtype: 'grid',
-                                    //     bind: {
-                                    //         store: '{gridStore}'
-                                    //     },
-                                    //     columns: [
-                                    //         { xtype: 'rownumberer'},
-                                    //         { text: 'txt', dataIndex: 'txt', flex: 1, renderer: (v) => `adjusted_${v}` },
-                                    //         { xtype: 'datecolumn', text: 'date column', dataIndex: 'date', flex: 1, format: 'Y-m-d' },
-                                    //         { text: 'column with renderer', dataIndex: 'int', flex: 1, renderer: (v) => `<span style="color:${v%2 === 0 ? 'red' : 'green'}">${v}</span>`, cell: { xtype:'gridcell', encodeHtml:false } },
-                                    //         { xtype: 'numbercolumn', text: 'number column with renderer', dataIndex: 'number', flex: 1, renderer: Ext.util.Format.usMoney },
-                                    //         { xtype: 'numbercolumn', text: 'number column with formatter', dataIndex: 'number', flex: 1, format: '0,0.00' },
-                                    //         { xtype: 'booleancolumn', text: 'bool column', dataIndex: 'bool', flex: 1 },
-                                    //         { xtype: 'checkcolumn', text: 'check column', dataIndex: 'bool', flex: 1 },
-                                    //         { xtype: 'templatecolumn', text: 'template column', tpl: '{txt} ({bool})', flex: 1 }
-                                    //     ]
-                                    // }
+                                    {
+                                        xtype: 'grid',
+                                        plugins: {
+                                            gridrowdragdrop: true
+                                        },
+                                        bind: {
+                                            store: '{gridStore}'
+                                        },
+                                        columns: [
+                                            { xtype: 'rownumberer'},
+                                            { text: 'txt', dataIndex: 'txt', flex: 1, renderer: (v) => `adjusted_${v}` },
+                                            { xtype: 'datecolumn', text: 'date column', dataIndex: 'date', flex: 1, format: 'Y-m-d' },
+                                            { text: 'column with renderer', dataIndex: 'int', flex: 1, renderer: (v) => `<span style="color:${v%2 === 0 ? 'red' : 'green'}">${v}</span>`, cell: { xtype:'gridcell', encodeHtml:false } },
+                                            { xtype: 'numbercolumn', text: 'number column with renderer', dataIndex: 'number', flex: 1, renderer: Ext.util.Format.usMoney },
+                                            { xtype: 'numbercolumn', text: 'number column with formatter', dataIndex: 'number', flex: 1, format: '0,0.00' },
+                                            { xtype: 'booleancolumn', text: 'bool column', dataIndex: 'bool', flex: 1 },
+                                            { xtype: 'checkcolumn', text: 'check column', dataIndex: 'bool', flex: 1 },
+                                            { xtype: 'templatecolumn', text: 'template column', tpl: '{txt} ({bool})', flex: 1 }
+                                        ],
+                                        listeners: {
+                                            beforedrop: 'onBeforeDrop',
+                                            drop: 'onDrop'
+                                        }
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+
+                    {
+                        tab: {
+                            iconCls: mh.FontIconsDictionary.getIcon('lgGroupingGrid'),
+                            iconAlign: 'left',
+                            bind: {
+                                title: '{localization.groupingGrid}'
+                            }
+                        },
+                        layout: 'fit',
+                        items: [
+                            {
+                                xtype: 'panel',
+                                iconCls: mh.FontIconsDictionary.getIcon('lgGroupingGrid'),
+                                bind: {
+                                    title: '{localization.groupingGrid}'
+                                },
+                                layout: 'fit',
+                                items: [
+                                    {
+                                        xtype: 'grid',
+                                        bind: {
+                                            store: '{gridStoreGrouped}'
+                                        },
+                                        grouped: true,
+                                        groupHeader: {
+                                            tpl: 'Group: {name}'
+                                        },
+                                        columns: [
+                                            { xtype: 'rownumberer'},
+                                            { text: 'txt', dataIndex: 'txt', flex: 1, renderer: (v) => `adjusted_${v}` },
+                                            { xtype: 'datecolumn', text: 'date column', dataIndex: 'date', flex: 1, format: 'Y-m-d' },
+                                            { text: 'column with renderer', dataIndex: 'int', flex: 1, renderer: (v) => `<span style="color:${v%2 === 0 ? 'red' : 'green'}">${v}</span>`, cell: { xtype:'gridcell', encodeHtml:false } },
+                                            { xtype: 'numbercolumn', text: 'number column with renderer', dataIndex: 'number', flex: 1, renderer: Ext.util.Format.usMoney },
+                                            { xtype: 'numbercolumn', text: 'number column with formatter', dataIndex: 'number', flex: 1, format: '0,0.00' },
+                                            { xtype: 'booleancolumn', text: 'bool column', dataIndex: 'bool', flex: 1 },
+                                            { xtype: 'checkcolumn', text: 'check column', dataIndex: 'bool', flex: 1 },
+                                            { xtype: 'templatecolumn', text: 'template column', tpl: '{txt} ({bool})', flex: 1 }
+                                        ]
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+
+                    {
+                        tab: {
+                            iconCls: mh.FontIconsDictionary.getIcon('lgTreeGrid'),
+                            iconAlign: 'left',
+                            bind: {
+                                title: '{localization.treeGrid}'
+                            }
+                        },
+                        layout: 'fit',
+                        items: [
+                            {
+                                xtype: 'panel',
+                                iconCls: mh.FontIconsDictionary.getIcon('lgTreeGrid'),
+                                bind: {
+                                    title: '{localization.treeGrid}'
+                                },
+                                layout: 'fit',
+                                items: [
+                                    {
+                                        xtype: 'tree',
+                                        bind: {
+                                            store: '{treeStore}'
+                                        },
+                                        columns: [
+                                            { xtype: 'treecolumn', text: 'txt', dataIndex: 'txt', flex: 1, renderer: (v) => `adjusted_${v}` },
+                                            { xtype: 'datecolumn', text: 'date column', dataIndex: 'date', flex: 1, format: 'Y-m-d' },
+                                            { text: 'column with renderer', dataIndex: 'int', flex: 1, renderer: (v) => `<span style="color:${v%2 === 0 ? 'red' : 'green'}">${v}</span>`, cell: { xtype:'gridcell', encodeHtml:false } },
+                                            { xtype: 'numbercolumn', text: 'number column with renderer', dataIndex: 'number', flex: 1, renderer: Ext.util.Format.usMoney },
+                                            { xtype: 'numbercolumn', text: 'number column with formatter', dataIndex: 'number', flex: 1, format: '0,0.00' },
+                                            { xtype: 'booleancolumn', text: 'bool column', dataIndex: 'bool', flex: 1 },
+                                            { xtype: 'checkcolumn', text: 'check column', dataIndex: 'bool', flex: 1 },
+                                            { xtype: 'templatecolumn', text: 'template column', tpl: '{txt} ({bool})', flex: 1 }
+                                        ]
+                                    }
                                 ]
                             }
                         ]
@@ -470,7 +564,6 @@
                 ]
             }
         ]
-
     });
 
 }());

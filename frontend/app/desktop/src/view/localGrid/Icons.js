@@ -21,6 +21,7 @@
                 lgCellEditor: 'x-i54 i54-edit-note',
                 lgRowEditor: 'x-i54 i54-clipboard-pencil',
                 lgDragAndDrop: 'x-i54c i54c-drag-drop',
+                lgGroupingGrid: 'x-i54 i54-pined-post-it',
                 lgTreeGrid: 'x-i54 i54-tree-grid'
             });
         }

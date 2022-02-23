@@ -13,7 +13,8 @@
             { name: 'date', type: 'date', allowNull: true, defaultValue: null },
             { name: 'int', type: 'integer', allowNull: true, defaultValue: null },
             { name: 'number', type: 'number', allowNull: true, defaultValue: null },
-            { name: 'bool', type: 'boolean', allowNull: true, defaultValue: null }
+            { name: 'bool', type: 'boolean', allowNull: true, defaultValue: null },
+            { name: 'grouper', type: 'string', allowNull: true, defaultValue: null }
         ]
     });
 

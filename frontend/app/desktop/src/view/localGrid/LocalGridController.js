@@ -72,6 +72,16 @@
             if(slider.rec && Ext.isFunction(slider.rec.set)){
                 slider.rec.set('number', newV);
             }
+        },
+
+        onBeforeDrop: function(node, data, overModel, dropPosition, eOpts){
+            //prevent dropping before nodes with lower int value
+            let rec = data.records[0];
+            return rec && overModel && rec.get('int') < overModel.get('int');
+        },
+
+        onDrop: function(node, data, overModel, dropPosition, eOpts){
+            console.log('row drop', 'node:', node, 'data:', data, 'overModel:', overModel, 'dropPosition:', dropPosition, 'eOpts:', eOpts);
         }
 
     });
