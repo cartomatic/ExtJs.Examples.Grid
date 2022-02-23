@@ -13,6 +13,26 @@
                 viewName: {
                     en: 'Remote grid',
                     pl: 'Remote grid'
+                },
+                paging: {
+                    en: 'Paging',
+                    pl: 'Stronicowanie'
+                },
+                continuousScroll: {
+                    en: 'Continuous scroll',
+                    pl: 'Continuous scroll'
+                },
+                customProxy: {
+                    en: 'Custom proxy',
+                    pl: 'Custom proxy'
+                },
+                remoteSort: {
+                    en: 'Remote sort & filter',
+                    pl: 'Zdalne sortowanie i filtrowanie'
+                },
+                sieve: {
+                    en: 'Use Biarity/Sieve',
+                    pl: 'Wykorzystanie Biarity/Sieve'
                 }
             }
         }

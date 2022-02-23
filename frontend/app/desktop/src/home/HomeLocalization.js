@@ -15,12 +15,18 @@
                     pl: 'Home'
                 },
                 helloWorld: {
-                    en: 'This project aims at demostrating some grid features that may come in useful when creating data intensive apps.<br/>' +
+                    en: 'This project is a webinar demo project that aims at demostrating some common grid features that may come in useful when creating data intensive apps.<br/>' +
+                        'Because of that examples are meant to be really simple and showcaseable during a live session and can be then anylyzed at ones own pace<br/><br/>' +
                         'Examples are split into two types:<br/>' +
-                        '<ul><li>Local store gird</li><li>Remote store grid</li></ul>',
-                    pl: 'Projekt mający na celu demonstrację właściwości komponentu "grid" przydatnych w aplikacjach wyświetlających duże ilości danych.<br/>' +
+                        '<ul><li>Local store grid</li><li>Remote store grid</li></ul>' +
+                        '<br/><br/>' +
+                        'The remote grid examples are backed by a simple .NET 6 WebAPI that is located in the backend directory',
+                    pl: 'Projekt będący projektem demo dla webinaru; ma na celu demonstrację właściwości komponentu "grid" przydatnych w aplikacjach wyświetlających duże ilości danych.<br/><br/>' +
+                        'Ten projekt z założenia jest maksymalni prosty tak, aby przykłdy były zrozumiałe i łatwo demonstrowalne</br>' +
                         'Przykłady podzielone zostały na dwie kategorie:<br/>' +
-                        '<ul><li>Gridy oparte o lokalny store</li><li>Gridy oparte o zdalny store</li></ul>'
+                        '<ul><li>Gridy oparte o lokalny store</li><li>Gridy oparte o zdalny store</li></ul>' +
+                        '<br/><br/>' +
+                        'Przykłady ze zdalnym gridem działają z prostym API napisanym w .NET 6 zlokalizowanym w folderze backend'
                 }
             }
         }
